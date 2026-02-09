@@ -155,7 +155,21 @@ function next() {
 }
 
 // primo step automatico
-next();
+function next() {
+
+    // musica parte AL PRIMO TAP (iPhone-safe)
+    if (index === 0) {
+        const music = document.getElementById("music");
+        music.volume = 0.4;
+        music.play().catch(() => {});
+    }
+
+    if (index < steps.length) {
+        renderStep();
+        index++;
+    }
+}
+
 
 // click SOLO sulla card (più affidabile)
 card.addEventListener("click", next);
